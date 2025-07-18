@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1><i class="fas fa-utensils"></i> Recipe Finder Pro</h1>
+            <div class="auth-buttons">
+                <button id="login-btn">Login</button>
+                <button id="signup-btn">Sign Up</button>
+                <div id="user-profile" class="hidden">
+                    <span id="username-display"></span>
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li class="active" data-section="search"><i class="fas fa-search"></i> Search</li>
+                <li data-section="favorites"><i class="fas fa-heart"></i> Favorites</li>
+                <li data-section="shopping-list"><i class="fas fa-shopping-cart"></i> Shopping List</li>
+                <li data-section="meal-plan"><i class="fas fa-calendar-alt"></i> Meal Plan</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Search Section -->
+        <section id="search-section" class="content-section">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for recipes...">
+                <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+                <button id="advanced-filter-btn"><i class="fas fa-sliders-h"></i> Filters</button>
+            </div>
+            <div class="advanced-filters" id="advanced-filters">
+                <!-- Filter controls same as before -->
+            </div>
+            <div class="results-container" id="results-container"></div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section id="favorites-section" class="content-section hidden">
+            <h2>Your Favorite Recipes</h2>
+            <div class="favorites-container" id="favorites-container"></div>
+        </section>
+
+        <!-- Shopping List Section -->
+        <section id="shopping-list-section" class="content-section hidden">
+            <h2>Shopping List</h2>
+            <div class="shopping-list-actions">
+                <button id="generate-shopping-list"><i class="fas fa-magic"></i> Generate from Selected</button>
+                <button id="clear-shopping-list"><i class="fas fa-trash"></i> Clear List</button>
+            </div>
+            <ul class="shopping-list" id="shopping-list"></ul>
+        </section>
+
+        <!-- Meal Plan Section -->
+        <section id="meal-plan-section" class="content-section hidden">
+            <h2>Weekly Meal Plan</h2>
+            <div class="meal-plan-actions">
+                <button id="generate-meal-plan"><i class="fas fa-random"></i> Generate Random Plan</button>
+                <button id="clear-meal-plan"><i class="fas fa-trash"></i> Clear Plan</button>
+            </div>
+            <div class="meal-plan-calendar" id="meal-plan-calendar"></div>
+        </section>
+    </main>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-recipe-content"></div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="auth-modal-content">
+                <!-- Login/Signup forms will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
